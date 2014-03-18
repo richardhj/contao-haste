@@ -84,11 +84,16 @@ class Relations extends \Backend
      */
     public function updateRelatedRecords($varValue, \DataContainer $dc)
     {
+        static $blnPurged;
         $arrRelation = static::getRelation($dc->table, $dc->field);
 
         if ($arrRelation !== false) {
             $arrValues = deserialize($varValue, true);
-            $this->purgeRelatedRecords($arrRelation, $dc->$arrRelation['reference']);
+
+            if (!$blnPurged) {
+                $this->purgeRelatedRecords($arrRelation, $dc->$arrRelation['reference']);
+                $blnPurged = true;
+            }
 
             foreach ($arrValues as $value) {
                 $arrSet = array(
@@ -362,6 +367,7 @@ class Relations extends \Backend
             $this->Session->setData($session);
         }
 
+        $count = 0;
         $return .= '<div class="tl_filter tl_subpanel">
 <strong>' . $GLOBALS['TL_LANG']['HST']['advanced_filter'] . '</strong> ';
 
@@ -373,6 +379,13 @@ class Relations extends \Backend
             $arrIds = Model::getRelatedValues($arrRelation['reference_table'], $field);
 
             if (empty($arrIds)) {
+                $return .= '</select> ';
+
+                // Add the line-break after 5 elements
+                if ((++$count % 5) == 0) {
+                    $return .= '<br>';
+                }
+
                 continue;
             }
 
@@ -437,6 +450,11 @@ class Relations extends \Backend
 
             $return .= "\n" . implode("\n", array_keys($options_sorter));
             $return .= '</select> ';
+
+            // Add the line-break after 5 elements
+            if ((++$count % 5) == 0) {
+                $return .= '<br>';
+            }
         }
 
         return $return . '</div>';
