@@ -1,3 +1,4 @@
+<?php
 $data = array(
 array('AD','AND','020','AN','Andorra','Andorra la Vella','468','84000','EU','.ad','EUR','Euro','376','AD###','^(?:AD)*(\d{3})$','ca','3041565','ES,FR',''),
 array('AE','ARE','784','AE','United Arab Emirates','Abu Dhabi','82880','4975593','AS','.ae','AED','Dirham','971','','','ar-AE,fa,en,hi,ur','290557','SA,OM',''),
