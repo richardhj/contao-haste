@@ -15,7 +15,7 @@ namespace Haste\Data;
 use Haste\Generator\ModelData;
 
 
-class Relation extends \ArrayObject
+class Relation extends \ArrayObject implements DataInterface
 {
 
     public function __construct(\Model $objModel=null, $label='', array $additional=array(), $varCallable=null)

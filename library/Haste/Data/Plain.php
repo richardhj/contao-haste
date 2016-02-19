@@ -13,7 +13,7 @@
 namespace Haste\Data;
 
 
-class Plain extends \ArrayObject
+class Plain extends \ArrayObject implements DataInterface
 {
 
     /**

@@ -15,7 +15,7 @@ namespace Haste\Data;
 use Haste\Util\Format;
 
 
-class Timestamp extends Plain
+class Timestamp extends Plain implements DataInterface
 {
 
     public function __construct($value, $label='', array $additional=array())

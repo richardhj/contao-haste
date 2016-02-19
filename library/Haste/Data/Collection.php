@@ -13,7 +13,7 @@
 namespace Haste\Data;
 
 
-class Collection implements \ArrayAccess, \IteratorAggregate
+class Collection implements DataInterface, \ArrayAccess, \IteratorAggregate
 {
     /**
      * @var array
