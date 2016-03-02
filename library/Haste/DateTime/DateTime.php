@@ -33,7 +33,7 @@ class DateTime extends \DateTime
      * @param   int
      * @param   DateTimeZone
      *
-     * @return DateTime
+     * @return self
      */
     public static function createFromTimestamp($tstamp, \DateTimeZone $timezone=null)
     {
