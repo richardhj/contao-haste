@@ -32,9 +32,18 @@ class DateTime extends \DateTime
      * Create new DateTime object from timestamp
      * @param   int
      * @param   DateTimeZone
+     *
+     * @return DateTime
      */
     public static function createFromTimestamp($tstamp, \DateTimeZone $timezone=null)
     {
-        return static::createFromFormat('U', $tstamp, $timezone);
+        $date = new self();
+        $date->setTimestamp($tstamp);
+
+        if ($timezone !== null) {
+            $date->setTimezone($timezone);
+        }
+
+        return $date;
     }
 }
